@@ -17,7 +17,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>1.0.5</dropwizard.version>
         <mainClass>com.demo.PoojaApplication</mainClass>
-        <releaseVersion>5.5</releaseVersion>
     </properties>
 
     <scm>
@@ -130,6 +129,7 @@
               <version>2.5.3</version>
                 <configuration>
 			 <tag>v${releaseVersion}</tag>
+                         <tagNameFormat>@{releaseVersion}</tagNameFormat> 
 			  <developmentVersion>@{project.version}</developmentVersion>
 			  <autoVersionSubmodules>false</autoVersionSubmodules>
                           <useReleaseProfile>false</useReleaseProfile>
