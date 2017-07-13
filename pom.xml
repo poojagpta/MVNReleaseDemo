@@ -128,7 +128,6 @@
               <artifactId>maven-release-plugin</artifactId>
               <version>2.5.3</version>
                 <configuration>
-			 <releaseVersion>6.7</releaseVersion>
                          <tag>v${releaseVersion}</tag>                         
                          <tagNameFormat>@{releaseVersion}</tagNameFormat> 
 			  <developmentVersion>@{project.version}</developmentVersion>
@@ -149,7 +148,7 @@
     <distributionManagement>
      <repository>
          <id>git-releases</id>
-         <url>https://github.com/poojagpta/releases</url>
+         <url>https://github.com/poojagpta/MVNReleaseDemo/upload</url>
          <uniqueVersion>false</uniqueVersion>
      </repository>
     </distributionManagement>
