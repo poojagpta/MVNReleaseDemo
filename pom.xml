@@ -8,9 +8,8 @@
 
     <groupId>my.groupid</groupId>
     <artifactId>MVNReleaseDemo</artifactId>
-    <version>4.4-SNAPSHOT</version>
+    <version>2.3-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>Pooja</name>
 
     <properties>
@@ -18,13 +17,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <dropwizard.version>1.0.5</dropwizard.version>
         <mainClass>com.demo.PoojaApplication</mainClass>
+        <releaseVersion>5.5</releaseVersion>
     </properties>
 
     <scm>
 	<url>https://github.com/poojagpta/MVNReleaseDemo</url>
 	<connection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</connection>
         <developerConnection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
     <dependencyManagement>
@@ -129,9 +128,11 @@
               <artifactId>maven-release-plugin</artifactId>
               <version>2.5.3</version>
                 <configuration>
-			 <tag>4.8</tag>
-			  <tagNameFormat>v@{project.version}</tagNameFormat>
+			 <tag>v${releaseVersion}</tag>
+			  <developmentVersion>@{project.version}</developmentVersion>
 			  <autoVersionSubmodules>false</autoVersionSubmodules>
+                          <useReleaseProfile>false</useReleaseProfile>
+                          <goals>deploy</goals>  
 		</configuration>
 				<dependencies>
 					<dependency>
@@ -145,8 +146,8 @@
     </build>
     <distributionManagement>
      <repository>
-         <id>bintray</id>
-         <url>https://api.bintray.com/maven/poojagupta/DemoRepo/com.jbksoft</url>
+         <id>git-releases</id>
+         <url>https://github.com/poojagpta/releases/raw/master/</url>
          <releases>
       		<enabled>true</enabled>
     	 </releases>
