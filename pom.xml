@@ -24,7 +24,6 @@
 	<url>https://github.com/poojagpta/MVNReleaseDemo</url>
 	<connection>https://github.com/poojagpta/MVNReleaseDemo.git</connection>
         <developerConnection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</developerConnection>
-     <tag>1.1</tag>
   </scm>
 
     <dependencyManagement>
