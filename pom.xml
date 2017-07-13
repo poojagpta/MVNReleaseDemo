@@ -8,7 +8,7 @@
 
     <groupId>my.groupid</groupId>
     <artifactId>MVNReleaseDemo</artifactId>
-    <version>2.7-SNAPSHOT</version>
+    <version>2.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Pooja</name>
@@ -24,7 +24,6 @@
 	<url>https://github.com/poojagpta/MVNReleaseDemo</url>
 	<connection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</connection>
         <developerConnection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
     <dependencyManagement>
@@ -131,9 +130,7 @@
                 <configuration>
 			 <tag>3.8</tag>
 			  <tagNameFormat>v@{project.version}</tagNameFormat>
-			  <autoVersionSubmodules>true</autoVersionSubmodules>
-                          <preparationGoals>clean install</preparationGoals>
-                          <goal>deploy</goal>
+			  <autoVersionSubmodules>false</autoVersionSubmodules>
 		</configuration>
 				<dependencies>
 					<dependency>
@@ -145,7 +142,18 @@
           </plugin>
         </plugins>
     </build>
-
+    <distributionManagement>
+     <repository>
+         <id>bintray</id>
+         <url>https://api.bintray.com/maven/poojagupta/DemoRepo/com.jbksoft</url>
+         <releases>
+      		<enabled>true</enabled>
+    	 </releases>
+         <snapshots>
+           <enabled>false</enabled>
+        </snapshots>
+     </repository>
+    </distributionManagement>
     <reporting>
         <plugins>
             <plugin>
