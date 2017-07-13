@@ -148,7 +148,7 @@
     <distributionManagement>
      <repository>
          <id>git-releases</id>
-         <url>https://github.com/poojagpta/MVNReleaseDemo/upload</url>
+         <url>https://github.com/poojagpta/MVNReleaseDemo</url>
          <uniqueVersion>false</uniqueVersion>
      </repository>
     </distributionManagement>
