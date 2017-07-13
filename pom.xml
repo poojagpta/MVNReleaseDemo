@@ -128,12 +128,13 @@
               <artifactId>maven-release-plugin</artifactId>
               <version>2.5.3</version>
                 <configuration>
-			 <tag>v${releaseVersion}</tag>
+			 <releaseVersion>6.7</releaseVersion>
+                         <tag>v${releaseVersion}</tag>                         
                          <tagNameFormat>@{releaseVersion}</tagNameFormat> 
 			  <developmentVersion>@{project.version}</developmentVersion>
-			  <autoVersionSubmodules>false</autoVersionSubmodules>
+			  <autoVersionSubmodules>true</autoVersionSubmodules>
                           <useReleaseProfile>false</useReleaseProfile>
-                          <goals>deploy</goals>  
+                          <preparationGoals>clean install</preparationGoals> 
 		</configuration>
 				<dependencies>
 					<dependency>
@@ -148,13 +149,8 @@
     <distributionManagement>
      <repository>
          <id>git-releases</id>
-         <url>https://github.com/poojagpta/releases/raw/master/</url>
-         <releases>
-      		<enabled>true</enabled>
-    	 </releases>
-         <snapshots>
-           <enabled>false</enabled>
-        </snapshots>
+         <url>https://github.com/poojagpta/releases</url>
+         <uniqueVersion>false</uniqueVersion>
      </repository>
     </distributionManagement>
     <reporting>
