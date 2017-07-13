@@ -22,7 +22,7 @@
 
     <scm>
 	<url>https://github.com/poojagpta/MVNReleaseDemo</url>
-	<connection>https://github.com/poojagpta/MVNReleaseDemo.git</connection>
+	<connection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</connection>
         <developerConnection>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</developerConnection>
   </scm>
 
@@ -131,9 +131,6 @@
 			 <tag>1.1</tag>
 			  <tagNameFormat>v@{project.version}</tagNameFormat>
 			  <autoVersionSubmodules>true</autoVersionSubmodules>
-					<!-- releaseProfiles configuration will actually force a Maven profile 
-						– the `releases` profile – to become active during the Release process. -->
-
 		</configuration>
 				<dependencies>
 					<dependency>
