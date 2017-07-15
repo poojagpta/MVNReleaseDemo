@@ -178,7 +178,7 @@
     <distributionManagement>
      <repository>
          <id>git-releases</id>
-         <url>scm:git:https://github.com/poojagpta/MVNReleaseDemo.git</url>
+         <url>git:releases://git@github.com:poojagpta/MVNReleaseDemo.git</url>
          <uniqueVersion>false</uniqueVersion>
      </repository>
     </distributionManagement>
