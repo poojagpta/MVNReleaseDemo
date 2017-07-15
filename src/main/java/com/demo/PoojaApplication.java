@@ -3,6 +3,8 @@ package com.demo;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import com.demo.resources.GreetingResource;
+import com.demo.health.AppHealthCheck;
 
 public class PoojaApplication extends Application<PoojaConfiguration> {
 
@@ -23,7 +25,9 @@ public class PoojaApplication extends Application<PoojaConfiguration> {
     @Override
     public void run(final PoojaConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
+        GreetingResource greetingResource = new GreetingResource();
+        environment.jersey().register(greetingResource);
+        environment.healthChecks().register("health", new AppHealthCheck());
     }
 
 }

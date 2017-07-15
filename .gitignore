@@ -1,0 +1,7 @@
+#Ignore these file
+.idea/
+target/
+webService.iml
+webService.ipr
+webService.iws
+dependency-reduced-pom.xml
