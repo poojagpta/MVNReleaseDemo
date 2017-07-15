@@ -133,7 +133,7 @@
               <artifactId>maven-release-plugin</artifactId>
               <version>2.5.3</version>
                 <configuration>
-                         <tag>v${releaseVersion}</tag>                         
+                         <tag>@{releaseVersion}</tag>                         
                          <tagNameFormat>@{releaseVersion}</tagNameFormat> 
 			  <developmentVersion>@{project.version}</developmentVersion>
 			  <autoVersionSubmodules>true</autoVersionSubmodules>
