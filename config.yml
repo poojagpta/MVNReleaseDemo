@@ -1,4 +1,23 @@
 logging:
-  level: INFO
+  level: ERROR
   loggers:
-    my.groupid: DEBUG
+   "com.demo":
+     level: INFO
+     additive: false
+     appenders:
+     - type: file
+       logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+       currentLogFilename: ./log/myApp.log
+       archivedLogFilenamePattern: ./log/myApp-%d{yyyy-MM-dd}.log.gz
+       archivedFileCount: 7
+  appenders:
+    - type: console
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+
+server:
+  requestLog:
+    appenders:
+      - type: file
+        currentLogFilename: ./log/access.log
+        archivedLogFilenamePattern: ./log/accedd-%d.log.gz

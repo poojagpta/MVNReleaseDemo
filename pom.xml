@@ -43,6 +43,11 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
         </dependency>
+        <dependency>
+        <groupId>io.dropwizard</groupId>
+        <artifactId>dropwizard-hibernate</artifactId>
+        <version>${dropwizard.version}</version>
+    </dependency>
     </dependencies>
 
     <build>
@@ -172,7 +177,7 @@
     <distributionManagement>
      <repository>
          <id>git-releases</id>
-         <url>https://github.com/poojagpta/MVNReleaseDemo</url>
+         <url>git:releases://github.com/poojagpta/MVNReleaseDemo</url>
          <uniqueVersion>false</uniqueVersion>
      </repository>
     </distributionManagement>
