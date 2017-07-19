@@ -14,6 +14,7 @@ public class PoojaApplication extends Application<PoojaConfiguration> {
 
     @Override
     public String getName() {
+         System.out.println("This is a test application");
         return "Pooja";
     }
 
