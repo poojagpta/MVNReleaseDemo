@@ -1,0 +1,69 @@
+#!/bin/sh
+#
+# /etc/rc.d/init.d/webd
+#
+# chkconfig: 2345 99 15
+# description: Magpie web web application
+
+# . /etc/rc.d/init.d/functions
+# . /etc/profile # make sure we are using the intended python
+PROJECT_HOME=/opt/web/current
+SUPERVISORD=`which supervisord`
+
+function fail {
+    logger -p error -t webd -i -- $1
+    echo "error: $2"
+    exit 1
+}
+
+function do_start {
+    $SUPERVISORD -c ${PROJECT_HOME}/deployment/supervisord.conf && echo "Started supervisord for the web service dropwizard"
+    # Wait until the service actually begins listening on 443/tcp before registering with the ELB.
+    until [ "$(netstat -tulnp | grep -c 443)" -eq "1" ]; do
+        sleep 3
+        echo "Waiting for a listener to appear on port 443..."
+    done
+    echo "web service successfully started."
+}
+
+function do_stop {
+    pkill -f "$PROJECT_HOME/deployment/supervisord.conf" && echo "Stopped supervisord, waiting for JVM to exit..."
+    JAVA_PID=`pgrep -f "${PROJECT_HOME}/web.jar" 2>/dev/null`
+    until [ -z "$JAVA_PID" ]; do
+	    echo "JAVA_PID=$JAVA_PID, Waiting..."
+	    sleep 2
+	    JAVA_PID=`pgrep -f "${PROJECT_HOME}/web.jar" 2>/dev/null`
+    done
+    echo "web server successfully stopped."
+}
+
+function do_restart {
+    do_stop
+    do_start
+}
+
+function get_status {
+    JAVA_PID=`pgrep -f ${PROJECT_HOME}/web.jar 2>/dev/null`
+    if [ -z "$JAVA_PID" ]; then
+       echo "stopped"
+       return 3
+    else
+       echo "running"
+       return 0
+    fi
+}
+
+case "$1" in
+    start)
+        do_start
+    ;;
+    stop)
+        do_stop
+    ;;
+    restart)
+        do_restart
+    ;;
+    status)
+        get_status
+    ;;
+esac
